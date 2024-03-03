@@ -51,8 +51,8 @@ cron.schedule(
 );
 
 cron.schedule(
-  // "* 8-15 * * 1-5",
-  "* * * * *",
+  "* 8-15 * * 1-5",
+  // "* * * * *",
 
   () => {
     console.log("Menjalakan proses yang pending");
