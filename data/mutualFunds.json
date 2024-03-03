@@ -1,0 +1,17 @@
+[
+  {
+    "FundName": "ABC Fund",
+    "NAV": 1234.5678,
+    "Company": "Company A"
+  },
+  {
+    "FundName": "XYZ Fund",
+    "NAV": 9876.5432,
+    "Company": "Company B"
+  },
+  {
+    "FundName": "123 Fund",
+    "NAV": 4567.8912,
+    "Company": "Company A"
+  }
+]
