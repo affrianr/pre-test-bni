@@ -1,5 +1,6 @@
 const MutualFund = require("../models/mutualFunds");
 const MutualFundsTransactions = require("../models/mutualFundTransactionModel");
+const UserMutualFunds = require("../models/userMutualFundsModel");
 const QRCode = require("qrcode");
 const jsQR = require("jsqr");
 const { createCanvas, loadImage } = require("canvas");
@@ -11,6 +12,19 @@ class MutualFundController {
       res.status(200).json(data);
     } catch (error) {
       console.log(error);
+      next(error);
+    }
+  }
+
+  static async userFund(req, res, next) {
+    try {
+      let userId = req.user.id;
+      const data = await UserMutualFunds.findByUser(userId);
+
+      res.status(200).json(data);
+    } catch (error) {
+      console.log(error);
+      next(error);
     }
   }
 
@@ -101,10 +115,7 @@ class MutualFundController {
       });
     } catch (error) {
       console.log(error);
-      if (error) {
-        throw { name: "failed_payment" };
-      }
-      throw error;
+      next(error);
     }
   }
 

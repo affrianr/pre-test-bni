@@ -1,6 +1,18 @@
 const pool = require("../config/connection");
 
 class Model {
+  static async findByUser(userId) {
+    try {
+      let query = `
+            SELECT * FROM "UserMutualFunds"
+            WHERE "userId" = $1
+        `;
+      let { rows } = await pool.query(query, [userId]);
+      return rows;
+    } catch (error) {
+      console.log(error);
+    }
+  }
   static async findByUserFund(userId, fundId) {
     try {
       let query = `
