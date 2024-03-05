@@ -87,7 +87,10 @@ const pool = require("./connection");
             PRIMARY KEY ("transactionId"),
             CONSTRAINT "FK_Fund"
                 FOREIGN KEY ("fundId")
-                REFERENCES "MutualFunds"("fundId")
+                REFERENCES "MutualFunds"("fundId"),
+            CONSTRAINT "FK_User"
+                FOREIGN KEY ("userId")
+                REFERENCES "Users"("userId")
         )
     `;
     let dropTable = `

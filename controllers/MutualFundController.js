@@ -6,6 +6,16 @@ const jsQR = require("jsqr");
 const { createCanvas, loadImage } = require("canvas");
 
 class MutualFundController {
+  static async listTransaction(req, res, next) {
+    try {
+      const data = await MutualFundsTransactions.list();
+      res.status(200).json(data);
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
+
   static async list(req, res, next) {
     try {
       const data = await MutualFund.findAll();

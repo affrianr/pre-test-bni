@@ -1,6 +1,19 @@
 const pool = require("../config/connection");
 
 class Model {
+  static async list() {
+    try {
+      let query = `
+        SELECT * FROM "MutualFundsTransactions"
+      `;
+      const { rows } = await pool.query(query);
+      return rows;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
   static async create(fundId, userId, transactionType, units) {
     try {
       let fees = 0.02;
